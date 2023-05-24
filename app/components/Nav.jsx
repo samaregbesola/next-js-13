@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import NavSignIn from "./NavSignIn";
+import { getProviders } from "next-auth/react";
 
-export default function Nav() {
+export default async function Nav() {
+  const response = await getProviders();
   return (
     <nav className="flex flex-wrap items-center justify-between w-full py-4 md:py-0 px-4 text-lg text-gray-700 bg-white">
       <div>
@@ -31,7 +33,8 @@ export default function Nav() {
           </Link>
         </li>
       </ul>
-      <NavSignIn />
+
+      <NavSignIn providers={response} />
     </nav>
   );
 }

@@ -26,7 +26,7 @@ export async function generateMetadata({ params: { slug } }) {
 // Single film page
 export default async function FilmPage({ params: { slug } }) {
   const filmData = fetcher(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/slugify/slugs/film/${slug}`,
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/slugify/slugs/film/${slug}?populate=*`,
     { next: { revalidate: 20 } }
   );
   const film = await filmData;

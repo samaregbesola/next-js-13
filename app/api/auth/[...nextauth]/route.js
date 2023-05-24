@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+// import CredentialsProvider from "next-auth/providers/credentials";
 
 const handler = NextAuth({
   providers: [
@@ -7,6 +8,30 @@ const handler = NextAuth({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
+    // CredentialsProvider({
+    //   name: "Credentials",
+    //   credentials: {
+    //     email: { label: "Email", type: "text" },
+    //     password: { label: "Password", type: "password" },
+    //   },
+    //   async authorize(credentials, req) {
+    //     // Add your Strapi authentication logic here
+    //     const public_url = process.env.NEXT_PUBLIC_API_URL;
+    //     const response = await fetch(`${public_url}/api/auth/local`, {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(credentials),
+    //     });
+    //     const user = await response.json();
+    //     if (user) {
+    //       return user;
+    //     } else {
+    //       return null;
+    //     }
+    //   },
+    // }),
   ],
 
   session: { strategy: "jwt" },
