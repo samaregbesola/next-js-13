@@ -8,7 +8,9 @@ export default function Films({ films }) {
           films.data.map((film) => {
             return (
               <li key={film.id}>
-                <Link href={`films/${film.id}`}>{film.attributes.title}</Link>
+                <Link href={`films/${film.attributes.slug}`}>
+                  {film.attributes.title}
+                </Link>
               </li>
             );
           })
